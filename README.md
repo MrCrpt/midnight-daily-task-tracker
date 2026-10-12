@@ -5,9 +5,9 @@ Free, static tracker intended for GitHub Pages. Includes a 1,000-box target, dai
 ## Publish the website with GitHub Pages
 
 1. Open **Settings → Pages** in this repository.
-2. Under **Build and deployment**, choose **Deploy from a branch**.
-3. Select branch `main` and folder `/(root)`, then Save.
-4. Wait for the Pages deployment. The expected site URL is https://mrcrpt.github.io/midnight-daily-task-tracker/
+2. Under **Build and deployment**, set **Source** to **GitHub Actions**.
+3. Open the **Actions** tab and check the **Deploy tracker to GitHub Pages** workflow. If prompted, allow Pages deployment.
+4. Once the workflow completes successfully, the site URL should be https://mrcrpt.github.io/midnight-daily-task-tracker/
 
 The tracker stores progress in the browser's localStorage. It is not a shared database: data stays in the browser profile and device where you use it. Use **Export backup** to keep a copy, and **Import backup** to restore it.
 
