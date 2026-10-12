@@ -1,35 +1,33 @@
 # Midnight RP — Daily Task Tracker
 
-Free, static tracker intended for GitHub Pages. Includes a 1,000-box target, daily quota, checklist, estimated earnings, actual sale ledger, local browser persistence, backup export/import, and optional Discord reports.
+A free, mobile-friendly daily log for the Midnight RP scuba-box grind. The site includes a 1,000-box lifetime goal, daily quota and progress bar, dated session entries, a daily checklist with custom tasks, estimated earnings, an actual sale ledger, and JSON backup/restore. There is no Discord webhook integration; use the website itself to log and review your progress.
 
-## Publish the website with GitHub Pages
+## Publish on GitHub Pages
 
-1. Open **Settings → Pages** in this repository.
-2. Under **Build and deployment**, set **Source** to **GitHub Actions**.
-3. Open the **Actions** tab and check the **Deploy tracker to GitHub Pages** workflow. If prompted, allow Pages deployment.
-4. Once the workflow completes successfully, the site URL should be [https://github.com/MrCrpt/midnight-daily-task-tracker](https://github.com/MrCrpt/midnight-daily-task-tracker/tree/main)
+1. Open [Repository Pages settings](https://github.com/MrCrpt/midnight-daily-task-tracker/settings/pages).
+2. Set **Build and deployment → Source** to **GitHub Actions**.
+3. Open the [Actions tab](https://github.com/MrCrpt/midnight-daily-task-tracker/actions) and check **Deploy tracker to GitHub Pages**. If GitHub asks you to enable Pages, follow its prompt.
+4. When the deployment workflow succeeds, open the site at **https://mrcrpt.github.io/midnight-daily-task-tracker/**.
 
-The tracker stores progress in the browser's localStorage. It is not a shared database: data stays in the browser profile and device where you use it. Use **Export backup** to keep a copy, and **Import backup** to restore it.
+If the site does not open, check the workflow run and Pages settings first. I cannot verify from the repository file API alone that Pages is enabled or that a deployment has completed.
 
-## Earnings assumptions
+## Logging and data
 
-The tracker uses $11,000 per box as a midpoint estimate based on the supplied estimate of $100,000–$120,000 per 10 boxes. Change the code if your server's market prices change. Actual recorded sales are kept separate from estimates.
+- Add a dated box entry after each session. Use the note field for route or session details.
+- Set your daily quota; the overview shows boxes completed against that target.
+- Tick off the daily checklist and add custom tasks as needed.
+- Record actual sales in the sale ledger. Estimates and real recorded sales are shown separately.
+- Use **Export backup** regularly and **Import backup** to restore it.
 
-## Optional Discord webhook (free Cloudflare Worker)
+**Important:** this is a static GitHub Pages site. Your logs are saved in the browser's local storage on that device/profile; they are not automatically saved to GitHub and will not sync across devices or browsers. Export a backup before clearing browser data or switching devices.
 
-Do not put a Discord webhook URL in `index.html`, GitHub files, or any browser-side setting. The browser only needs the Worker endpoint URL; the Discord webhook remains a Cloudflare secret.
+## Earnings estimate
 
-1. Create a free Cloudflare account and open **Workers & Pages**.
-2. Create a Worker, then paste the contents of `cloudflare/worker.js` into its editor and deploy.
-3. In the Worker settings, add a secret environment variable named `DISCORD_WEBHOOK_URL` with your Discord webhook URL as its value. Never commit that value to GitHub.
-4. The Worker currently allows browser requests from `https://mrcrpt.github.io`. If you use a different Pages domain, update `ALLOWED_ORIGIN` in `cloudflare/worker.js` and redeploy.
-5. In the tracker, enter the deployed Worker URL and choose **Save endpoint**. Use **Send daily report** to test it.
+The estimate is **$11,000 per box**, using the midpoint of the provided estimate of $100,000–$120,000 per 10 boxes. This is only a planning estimate. Update the value in `index.html` if the server economy changes.
 
-**Security limitation:** origin checks and CORS are browser protections, not authentication. A determined person can send requests directly to a public Worker URL. For a private Discord channel, monitor webhook activity and consider adding a proper access-control mechanism or rate limiting before sharing the site. Never expose the Discord webhook secret.
+## Project files
 
-## Notes
+- `index.html` — complete tracker UI and local-first app logic.
+- `.github/workflows/deploy-pages.yml` — deploys the static site to GitHub Pages on pushes to `main`.
 
-- The daily checklist resets by date; task completion is stored locally.
-- Daily totals are calculated from entries whose date matches today's local date.
-- The site does not automatically send scheduled reports; use **Send daily report** when you want to post one.
-- No paid hosting is required for this static site and low-volume Worker setup, subject to each provider's current free-tier limits.
+No paid hosting or webhook setup is required for the tracker.
