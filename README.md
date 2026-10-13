@@ -1,6 +1,6 @@
 # Midnight RP — Daily Task Tracker
 
-A free, mobile-friendly daily log for the Midnight RP scuba-box grind. The site includes a 1,000-box lifetime goal, daily quota and progress bar, dated session entries, a daily checklist with custom tasks, estimated earnings, an actual sale ledger, and JSON backup/restore. There is no Discord webhook integration; use the website itself to log and review your progress.
+A free, mobile-friendly daily log for the Midnight RP scuba-box grind. The site includes a 1,000-box lifetime goal, configurable daily quota, weekly grind plan for three flexible sessions, weekly baseline and session targets, dated session entries, a full-RP daily checklist with custom tasks, estimated earnings, an actual sale ledger, and JSON backup/restore. There is no Discord webhook integration; use the website itself to log and review your progress.
 
 ## Publish on GitHub Pages
 
@@ -15,6 +15,9 @@ If the site does not open, check the workflow run and Pages settings first. I ca
 
 - Add a dated box entry after each session. Use the note field for route or session details.
 - Set your daily quota; the overview shows boxes completed against that target.
+- Start with a 60-box weekly baseline (20 per session across three sessions) and a 90-box stretch target. These are planning targets, not verified server rates; adjust them after recording real session data.
+- Use the three-session rotation: (A) scuba collection, (B) scuba plus inventory and sales, (C) catch-up plus another RP objective and weekly review. Pick any three days; rest days have no penalty.
+- The checklist covers route planning, scuba collection, inventory, sales, one additional RP objective, resource checks, financial logging, and session close-out.
 - Tick off the daily checklist and add custom tasks as needed.
 - Record actual sales in the sale ledger. Estimates and real recorded sales are shown separately.
 - Use **Export backup** regularly and **Import backup** to restore it.
@@ -23,7 +26,7 @@ If the site does not open, check the workflow run and Pages settings first. I ca
 
 ## Earnings estimate
 
-The estimate is **$11,000 per box**, using the midpoint of the provided estimate of $100,000–$120,000 per 10 boxes. This is only a planning estimate. Update the value in `index.html` if the server economy changes.
+The estimate is **$11,000 per box**, using the midpoint of the provided estimate of $100,000–$120,000 per 10 boxes. The 1,000-box gross projection is $10M–$12M. This is a planning estimate only, not guaranteed sale revenue or profit; the sale ledger is the source of truth for actual recorded sales.
 
 ## Project files
 
